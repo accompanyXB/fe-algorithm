@@ -17,6 +17,15 @@
  * @param {TreeNode} root
  * @return {number}
  */
+
+      1
+     / \
+    2   3
+   / \
+  4   5
+     / \
+    6   7
+
 var diameterOfBinaryTree = function(root) {
   let len=0
   function dfs(root){
@@ -30,6 +39,10 @@ var diameterOfBinaryTree = function(root) {
     let right = dfs(root.right)
     len = Math.max(len,left+right)
 
+    // 递归过程：
+    // 求dpth(1) 必求dpth(2)、dpth(3)
+    // 求dpth(2) 必求dpth(4)、dpth(5)
+    // 递归公式：dpth(rt) = max(dpth(rt左子树)，dpth(rt右子树)) + 1
     return Math.max(left,right)+1
   }
   dfs(root)
