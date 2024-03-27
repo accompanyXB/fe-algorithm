@@ -35,15 +35,12 @@ var diameterOfBinaryTree = function(root) {
     // if(root===null){
     //   return null
     // }
-    let left = dfs(root.left)
-    let right = dfs(root.right)
-    len = Math.max(len,left+right)
+    let left = dfs(root.left) // 递归计算左子树的深度
+    let right = dfs(root.right) // 递归计算右子树的深度
+    len = Math.max(len,left+right) // 更新当前路径上的直径长度，取左右子树深度之和的最大值
 
-    // 递归过程：
-    // 求dpth(1) 必求dpth(2)、dpth(3)
-    // 求dpth(2) 必求dpth(4)、dpth(5)
-    // 递归公式：dpth(rt) = max(dpth(rt左子树)，dpth(rt右子树)) + 1
-    return Math.max(left,right)+1
+    // 比如节点2 左子树 的深度是 2 和 右子树的深度是 3 取最大值
+    return Math.max(left,right)+1 // 返回以当前节点为根的子树的深度，加1是因为当前节点也要算进去
   }
   dfs(root)
   return len
