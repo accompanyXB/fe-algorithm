@@ -38,5 +38,30 @@ var isBalanced = function(root) {
   return flag;
 
 };
+
+// var isBalanced = function(root) {
+//   function travese(node){
+//     if(node===null){
+//       return 0
+//     }
+//     let  leftDepth = travese(node.left)
+//     if(leftDepth===-1){
+//       return -1
+//     }
+//     let  rightDepth = travese(node.right)
+//     if(rightDepth===-1){
+//       return -1
+//     }
+//     if(Math.abs(leftDepth-rightDepth)>1){
+//       return -1
+//     }else{
+//       return 1 + Math.max(leftDepth,rightDepth)
+//     }
+//   }
+
+//   return travese(root)!==-1
+
+// };
+
 // @lc code=end
 
