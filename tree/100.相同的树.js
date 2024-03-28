@@ -18,18 +18,18 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-// var isSameTree = function(p, q) {
-//   if(p===null&&q===null){
-//     return true
-//   }
-//   if(p===null||q===null){
-//     return false
-//   }
-//   if(p.val!==q.val){
-//     return false
-//   }
-//   return isSameTree(p.left,q.left) && isSameTree(p.right,q.right)
-// };
+var isSameTree = function(p, q) {
+  if(p===null&&q===null){
+    return true
+  }
+  if(p===null||q===null){
+    return false
+  }
+  // 如果p，q节点的值相等，就递归判断其左右子树是否相等
+  if(p.val === q.val){
+    return isSameTree(p.left,q.left) && isSameTree(p.right,q.right)
+  }
+};
 // var isSameTree = function(p,q){
 //   function travese(p,q){
 //     if(p===null&&q===null){
@@ -51,37 +51,37 @@
 // var isSameTree = function(p,q){
 //   return JSON.stringify(p)===JSON.stringify(q)
 // }
-var isSameTree1 = function(p,q){
-  // 迭代
-    if(p===null&&q===null){
-      return true
-    }
-    if(p===null||q===null){
-      return false
-    }
-    let queueP = [p]
-    let queueQ = [q]
-    while(queueP.length && queueQ.length){
-      const nodeP = queueP.shift()
-      const nodeQ = queueQ.shift()
-      if(nodeP.val!==nodeQ.val){
-        return false
-      }
-      if(nodeP.left && nodeQ.left){
-        queueP.push(nodeP.left)
-        queueQ.push(nodeQ.left)
-      }else if(nodeP.left || nodeQ.left){
-        return false
-      }
+// var isSameTree1 = function(p,q){
+//   // 迭代
+//     if(p===null&&q===null){
+//       return true
+//     }
+//     if(p===null||q===null){
+//       return false
+//     }
+//     let queueP = [p]
+//     let queueQ = [q]
+//     while(queueP.length && queueQ.length){
+//       const nodeP = queueP.shift()
+//       const nodeQ = queueQ.shift()
+//       if(nodeP.val!==nodeQ.val){
+//         return false
+//       }
+//       if(nodeP.left && nodeQ.left){
+//         queueP.push(nodeP.left)
+//         queueQ.push(nodeQ.left)
+//       }else if(nodeP.left || nodeQ.left){
+//         return false
+//       }
 
-      if(nodeP.right && nodeQ.right){
-        queueP.push(nodeP.right)
-        queueQ.push(nodeQ.right)
-      }else if(nodeP.right || nodeQ.right){
-        return false
-      }
-    }
-    return true
-}
+//       if(nodeP.right && nodeQ.right){
+//         queueP.push(nodeP.right)
+//         queueQ.push(nodeQ.right)
+//       }else if(nodeP.right || nodeQ.right){
+//         return false
+//       }
+//     }
+//     return true
+// }
 // @lc code=end
 
