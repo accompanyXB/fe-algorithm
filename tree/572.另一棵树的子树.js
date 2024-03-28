@@ -40,10 +40,10 @@ var isSameTree = function(p, q) {
   if(p===null||q===null){
     return false
   }
-  if(p.val!==q.val){
-    return false
+  // 如果p，q节点的值相等，就递归判断其左右子树是否相等
+  if(p.val === q.val){
+    return isSameTree(p.left,q.left) && isSameTree(p.right,q.right)
   }
-  return isSameTree(p.left,q.left) && isSameTree(p.right,q.right)
 };
 // @lc code=end
 
