@@ -21,14 +21,19 @@
 var mergeTrees = function(root1, root2) {
 
   function dfs(root1,root2){
+    // 如果没有root1则返回root2
     if(!root1){
       return root2
     }
+    // 如果没有root2则返回root1
     if(!root2){
       return root1
     }
+    // 如果root1和root2都存在，则值相加
     root1.val += root2.val
+    // 遍历左子树
     root1.left =dfs(root1.left,root2.left)
+    // 遍历右子树
     root1.right =dfs(root1.right,root2.right)
     return root1
   }
