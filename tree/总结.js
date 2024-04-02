@@ -131,6 +131,13 @@ var countNodes = function(root) {
 };
 
 [543] 二叉树的直径
+      1
+     / \
+    2   3
+   / \
+  4   5
+     / \
+    6   7
 var diameterOfBinaryTree = function(root) {
   let len=0
   function dfs(root){
@@ -146,4 +153,37 @@ var diameterOfBinaryTree = function(root) {
   }
   dfs(root)
   return len
+};
+
+
+// 层序遍历题目
+
+[102] 二叉树的层序遍历
+      3
+     / \
+    9   20
+   / \
+  4   5
+     / \
+    6   7
+
+var levelOrder = function(root) {
+  let ret = [] //结果
+  if(root===null){
+    return ret
+  }
+  let queue = [root] //遍历中用的队列
+  while(queue.length){
+    let len = queue.length //一层的数据量
+    let curLevel = []
+    while(len>0){
+      let node = queue.shift()  
+      curLevel.push(node.val)
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+      len--
+    }
+    ret.push(curLevel)
+  }
+  return ret
 };
