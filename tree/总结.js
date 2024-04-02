@@ -1,3 +1,5 @@
+// 递归和迭代
+
 [100] 相同的树
 var isSameTree = function(p, q) {
   if(p===null&&q===null){
@@ -95,9 +97,6 @@ var mergeTrees = function(root1, root2) {
   return dfs(root1,root2)
 };
 
-
-
-
 [111] 二叉树的最小深度
 var minDepth = function(root) {
   if(root===null){
@@ -114,8 +113,6 @@ var minDepth = function(root) {
   }
   return Math.min(minDepth(root.left),minDepth(root.right))+1
 };
-
-
 
 [222] 完全二叉树的节点个数
 var countNodes = function(root) {
@@ -156,18 +153,57 @@ var diameterOfBinaryTree = function(root) {
 };
 
 
+
+
 // 层序遍历题目
+方法： 使用 栈 或者 队列
 
 [102] 二叉树的层序遍历
       3
      / \
     9   20
-   / \
-  4   5
-     / \
-    6   7
+       / \
+      15  7
+
+// queue [3]  1
+// queue [9,20]  2
+输入： root = [3, 9, 20, null, null, 15, 7]
+输出：[[3], [9, 20], [15, 7]]
 
 var levelOrder = function(root) {
+  let ret = [] //结果
+  if(root===null){
+    return ret
+  }
+  let queue = [root] //遍历中用的队列
+  while(queue.length){
+    let len = queue.length //一层的数据量
+    let curLevel = []
+    while(len>0){ // 遍历每一层
+      let node = queue.shift()  
+      curLevel.push(node.val) 存每一层的数据
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+      len--
+    }
+    ret.push(curLevel) 汇集 每一层的数据
+  }
+  return ret
+};
+
+[107] 二叉树的层序遍历 II
+      3
+     / \
+    9   20
+       / \
+      15  7
+
+// queue [3]  1
+// queue [9,20]  2
+输入： root = [3, 9, 20, null, null, 15, 7]
+输出：[[15, 7], [9, 20], [3]]
+
+var levelOrderBottom = function(root) {
   let ret = [] //结果
   if(root===null){
     return ret
@@ -183,7 +219,33 @@ var levelOrder = function(root) {
       node.right && queue.push(node.right)
       len--
     }
-    ret.push(curLevel)
+    // unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
+    ret.unshift(curLevel)
   }
+  return ret
+};
+
+ [199] 二叉树的右视图: 相当于返回 每一层最右边的一个值
+var rightSideView = function(root) {
+  // 每一层最右边的一个值
+  let ret = []
+  if(root===null){
+    return ret
+  }
+  let queue = [root]
+
+  while(queue.length){
+    let len = queue.length
+    while(len--){
+      let node = queue.shift()
+      if(len===0){
+        ret.push(node.val)
+      }
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+    }
+    
+  }
+
   return ret
 };
