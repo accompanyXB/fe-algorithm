@@ -155,8 +155,37 @@ var diameterOfBinaryTree = function(root) {
 
 
 
+
+
+
+
+
+
+
 // 层序遍历题目
 方法： 使用 栈 或者 队列
+公式：
+var walk = function(root) {
+  let ret = [] //结果
+  if(root===null){
+    return ret
+  }
+  let queue = [root] //遍历中用的队列
+  while(queue.length){
+    let len = queue.length //一层的数据量
+    let curLevel = []
+    while(len){ // 遍历每一层
+
+      问题处理
+ 
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+      len--
+    }
+    ret.push(curLevel) 汇集 每一层的数据
+  }
+  return ret
+};
 
 [102] 二叉树的层序遍历
       3
@@ -248,4 +277,56 @@ var rightSideView = function(root) {
   }
 
   return ret
+};
+
+[637] 二叉树的层平均值
+var averageOfLevels = function(root) {
+  let ret = []
+  if(root===null){
+    return ret
+  }
+  let queue = [root]
+  while(queue.length){
+    let len = queue.length
+    let sum = 0
+    for(let i=0;i<len;i++){
+      let node = queue.shift()
+      sum += node.val
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+    }
+
+    ret.push(sum/len)
+  }
+  return ret
+};
+
+[116] 填充每个节点的下一个右侧节点指针
+       1
+     /  \
+    2    3
+   / \   / \
+ 4    5 6   7
+
+// [1]
+// [2,3]
+// 45,6,[,7]
+var connect = function(root) {
+  if(root===null){
+    return root
+  }
+  let queue = [root]
+  while(queue.length){
+    let len = queue.length
+    while(len--){
+      let node = queue.shift()
+      if(len>0){
+        //不是最后一个
+        node.next = queue[0]
+      }
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+    }
+  }
+  return root
 };
