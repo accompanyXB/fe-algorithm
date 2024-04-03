@@ -1,4 +1,20 @@
 // 递归和迭代
+// 公式：
+var walk = function(root) {
+  function travese(node){
+    // 终止条件
+    if(node===null){
+      return 
+    }
+    // 特定处理
+
+    
+    travese(node.left)
+    travese(node.right)
+  }
+  travese(root) 
+  return 结果
+};
 
 [100] 相同的树
 var isSameTree = function(p, q) {
@@ -39,6 +55,20 @@ var isSameTree = function(p, q) {
   if(p.val === q.val){
     return isSameTree(p.left,q.left) && isSameTree(p.right,q.right)
   }
+};
+
+[112] 路径总和
+var hasPathSum = function(root, targetSum) {
+
+  if(root==null){
+    return false
+  }
+  if(!root.left && !root.right){
+    return root.val ===targetSum
+  }
+  // targetSum 每次减去当前节点
+  let offset = targetSum - root.val
+  return hasPathSum(root.left,offset) || hasPathSum(root.right,offset)
 };
 
 [101] 对称二叉树
@@ -152,8 +182,25 @@ var diameterOfBinaryTree = function(root) {
   return len
 };
 
-
-
+[404] 左叶子之和
+var sumOfLeftLeaves = function(root) {
+  let leftSum = 0
+  function travese(node){
+    if(node===null){
+      return 
+    }
+    // left是单独的节点
+    let left = node.left
+    if(left && !left.left && !left.right){
+      leftSum += left.val
+    }
+    // left有嵌套，走递归
+    travese(node.left)
+    travese(node.right)
+  }
+  travese(root) 
+  return leftSum
+};
 
 
 
@@ -330,3 +377,29 @@ var connect = function(root) {
   }
   return root
 };
+
+[429] N 叉树的层序遍历
+var levelOrder = function(root) {
+  let ret = []
+  if(root===null){
+    return ret
+  }
+  let queue = [root]
+  while(queue.length){
+    let curLevel = []
+    let len = queue.length
+    for(let i=0;i<len;i++){
+      let node = queue.shift()
+      curLevel.push(node.val)
+      // n 叉树，塞入node的所有子节点
+      node.children.forEach(child=>{
+        child && queue.push(child)
+      })
+      // node.left && queue.push(node.left)
+      // node.right && queue.push(node.right)
+    }
+    ret.push(curLevel)
+  }
+  return ret
+};
+
