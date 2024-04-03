@@ -63,11 +63,13 @@ var hasPathSum = function(root, targetSum) {
   if(root==null){
     return false
   }
+  // 当遇到叶子节点，判断当前节点是否等于 剩余目标 offset
   if(!root.left && !root.right){
     return root.val ===targetSum
   }
-  // targetSum 每次减去当前节点
+  // 没遇到叶子节点前，targetSum 每次减去当前节点，得到剩余目标offset
   let offset = targetSum - root.val
+  // 左右子树里面有一边符合就是true
   return hasPathSum(root.left,offset) || hasPathSum(root.right,offset)
 };
 
