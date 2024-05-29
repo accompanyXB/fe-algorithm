@@ -3,7 +3,7 @@
  *
  * [746] 使用最小花费爬楼梯
  */
-
+解答:https://leetcode.cn/problems/min-cost-climbing-stairs/solutions/2569116/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-j99e/
 // @lc code=start
 /**
  * @param {number[]} cost
