@@ -9,18 +9,18 @@
  * @param {number[]} cost
  * @return {number}
  */
-// 规划这个最小值
 var minCostClimbingStairs = function(cost) {
     const n = cost.length;
-    function dfs(i) {
-        if (i <= 1) { // 递归边界
-            return 0;
-        }
+    // 初始化 dp 数组，其中 dp[0] 和 dp[1] 表示到达第 0 层和第 1 层的最小花费 免费
+    let dp = [0, 0];
+
+    // 填充 dp 数组
+    for (let i = 2; i <= n; i++) {
         // 计算从第 i-1 层到第 i 层的最小花费，加上到达第 i-1 层的花费：dfs(i - 1) + cost[i - 1]。
         // 计算从第 i-2 层到第 i 层的最小花费，加上到达第 i-2 层的花费：dfs(i - 2) + cost[i - 2]
-        return Math.min(dfs(i - 1) + cost[i - 1], dfs(i - 2) + cost[i - 2]);
+        dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
     }
-    return dfs(n);
+
+    // 返回到达第 n 层的最小花费
+    return dp[n];
 };
-
-
