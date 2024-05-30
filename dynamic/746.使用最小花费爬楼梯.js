@@ -16,6 +16,8 @@ var minCostClimbingStairs = function(cost) {
         if (i <= 1) { // 递归边界
             return 0;
         }
+        // 计算从第 i-1 层到第 i 层的最小花费，加上到达第 i-1 层的花费：dfs(i - 1) + cost[i - 1]。
+        // 计算从第 i-2 层到第 i 层的最小花费，加上到达第 i-2 层的花费：dfs(i - 2) + cost[i - 2]
         return Math.min(dfs(i - 1) + cost[i - 1], dfs(i - 2) + cost[i - 2]);
     }
     return dfs(n);
