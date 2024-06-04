@@ -44,10 +44,11 @@ var rob = function(root) {
     if(node===null){
       return [0,0]
     }
-    // left[0] 表示在不偷取当前节点的情况下，左子树能够获取的最大收益。
-    // right[0] 表示在不偷取当前节点的情况下，右子树能够获取的最大收益。
     const left = dfs(node.left)
     const right = dfs(node.right)
+    // left[0] 表示在不偷取当前节点的情况下，左子树能够获取的最大收益。
+    // right[0] 表示在不偷取当前节点的情况下，右子树能够获取的最大收益。
+   // 如果我们偷当前节点，那么我们不能偷它的子节点。这样，我们得到的总收益是当前节点的值加上不偷取它的左子节点和右子节点时的最大收益。
     const doSelf = node.val + left[0]+right[0]
     const doNotself = Math.max(...left)+ Math.max(...right)
     // [不偷当前节点，偷当前节点]
