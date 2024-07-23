@@ -49,7 +49,7 @@ var minSubArrayLen = function(target, nums) {
   // return result>len?0:result
 
 
-// 滑动窗口思路：先移动快指针 右边界变大，让窗口中的值满足题目的解，然后移动慢指针，找到最优解
+// 滑动窗口思路：先移动快指针（右边界变大），让窗口中的值满足题目的解，然后移动慢指针（移动左边界），找到最优解
 let slow = 0, sum = 0;
 let minLength = Number.MAX_VALUE;
 for (let fast = 0; fast < nums.length; fast++) {
