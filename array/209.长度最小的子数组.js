@@ -56,7 +56,7 @@ for (let fast = 0; fast < nums.length; fast++) {
   // 由于数组中的所有数字都是正整数，因此在子数组中添加新的数字能得到更大的子数组之和
   sum += nums[fast];
   // sum>=target 已经是找到了可行解了
-  while (slow <= fast && sum >= target) {
+  while (sum >= target) {
     //  移动左边界，在可行解里面寻找最优解
     minLength = Math.min(minLength, fast - slow + 1);
     sum -= nums[slow++];
