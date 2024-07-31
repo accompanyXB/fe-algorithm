@@ -19,24 +19,31 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-// 100 10
-// // 先走10个节点
-// 然后fast slow一起走
-
-  // let dummy = new ListNode(null,head)
+  // 使用虚拟节点（dummy node）以简化边界情况的处理
   let dummy = {
-    next:head
+    next: head
+  };
+  
+  // 初始化快慢指针
+  let slow = dummy;
+  let fast = dummy;
+  
+  // 先让快指针移动 n 步
+  while (n--) {
+    fast = fast.next;
   }
-  let slow = fast = dummy
-  while(n--){
-    fast = fast.next
+  
+  // 然后快慢指针一起移动，直到快指针到达链表的末尾
+  while (fast.next !== null) {
+    fast = fast.next;
+    slow = slow.next;
   }
-  while(fast.next!==null){
-    fast = fast.next
-    slow = slow.next
-  }
-  slow.next = slow.next.next
-  return dummy.next
+  
+  // 此时慢指针的下一个节点就是要删除的节点，移除它
+  slow.next = slow.next.next;
+  
+  // 返回新的链表头节点
+  return dummy.next;
 };
 // @lc code=end
 
