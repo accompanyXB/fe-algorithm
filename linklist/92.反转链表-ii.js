@@ -42,18 +42,16 @@ var reverseBetween = function(head, left, right) {
         prev = cur
         cur = next // cur = cur.next
     }
-    // dummy -> 1 -> 2
-    // 7 -> 6 -> 5 -> 4 -> 3
+    // dummy -> 1 -> 2 -> 3 <- 4 <- 5 <- 6 <- 7 -> 8 -> 9
+    //               |                        |    |
+    //              tmp                           cur
+    //                                       prev
 
-    // cur  -> 7 -> 6 -> 5 -> 4 -> 3
-    // next -> 8
-    // prev -> 7 -> 6 -> 5 -> 4 -> 3
-
-    // dummy -> 1 -> 2 -> 7 -> 6 -> 5 -> 4 -> 3 -> 8 -> 9
     // 3 -> 8
     tmp.next.next = cur
     // 2 -> 7
     tmp.next = prev
+    // dummy -> 1 -> 2 -> 7 -> 6 -> 5 -> 4 -> 3 -> 8 -> 9
 
     return dummy.next
 };
