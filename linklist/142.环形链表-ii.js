@@ -30,28 +30,19 @@ var detectCycle = function(head) {
   // a = n(b+c)-b
   // a = (n-1)(b+c)+c
 
-  if(head==null){
-    return null
-  }
-  let slow = head
-  let fast = head
-  while(fast!==null){
-    slow = slow.next
-    if(fast.next!=null){
-      fast = fast.next.next
-    }else{
-      return null
+  let slow = head, fast = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (fast === slow) {
+            while (slow !== head) {
+                slow = slow.next;
+                head = head.next;
+            }
+            return slow;
+        }
     }
-    if(fast===slow){
-      let cur = head
-      while(cur!==slow){
-        cur = cur.next
-        slow = slow.next
-      }
-      return cur
-    }
-  }
-  return null
+    return null;
 };
 // @lc code=end
 
