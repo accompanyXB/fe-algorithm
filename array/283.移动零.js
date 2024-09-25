@@ -30,5 +30,21 @@ var moveZeroes = function(nums) {
   }
 
 };
+
+
+// 非零元素全部按顺序前置，剩下空间存放0
+var moveZeroes = function(nums)  {
+    let count = 0 // 用于计数非零元素的数量
+    for(let i=0; i<nums.length; i++) {
+        if (nums[i] != 0) {
+            nums[count] = nums[i] // 将非零元素放在前面
+            count++ // 增加非零元素的计数
+        }
+    }
+    // 由于已经按照正确的顺序填充了非零元素，现在只需要填充零即可
+    for(let i=count; i<nums.length; i++) {
+        nums[i] = 0
+    }
+}
 // @lc code=end
 
