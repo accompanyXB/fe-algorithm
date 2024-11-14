@@ -16,6 +16,11 @@
  * @param {ListNode} head
  * @return {boolean}
  */
+
+// 使用快慢指针找到链表的中点。
+// 反转前半部分链表。
+// 比较前半部分和后半部分的节点值。
+
 var isPalindrome = function(head) {
   // 通过双指针，把前半截翻转了
   //    |
