@@ -28,6 +28,10 @@ var isPalindrome = function(head) {
   let slow = fast = head
   let prev
 
+  //循环过程中，每次操作如下：
+  // 快指针 fast 每次移动两步，用于定位中点。
+  // 慢指针 slow 每次移动一步，同时将经过的节点反转，构建反转后的前半部分链表。
+  // 当 fast 为 null 或指向链表末尾时，结束循环，此时 prev 指向前半部分反转后的链表头，slow 指向中间节点（或后半部分的起始节点）。
   while(fast && fast.next){
     fast = fast.next.next
     
