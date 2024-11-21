@@ -31,6 +31,10 @@ var getIntersectionNode = function(headA, headB) {
   // curA 到达 5 后移动到 null，然后切换到 6。
   // curB 到达 5 后移动到 null，然后切换到 1。
   // 第二次遍历时，curA 和 curB 会在节点 3 相遇。
+  
+  // 方法：使用两个指针在两个链表上遍历，当一个指针到达链表末尾时，跳转到另一个链表的头部继续遍历。
+  // 原理：通过让两个指针以相同的速度遍历 两条链表的总长度，它们将同时到达交点或同时到达链表末尾（即 null）。
+
 
   let curA = headA
   let curB = headB
