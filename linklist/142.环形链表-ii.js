@@ -29,6 +29,8 @@ var detectCycle = function(head) {
   // 想找a
   // a = n(b+c)-b
   // a = (n-1)(b+c)+c
+ // 从头节点 head 到环入口的距离 a，等于相遇点到环入口的距离 c 加上若干圈 (n-1)(b + c)
+// 一句话总结：用快慢指针检测环，找到相遇点后，一个从头开始，一个从相遇点开始走，最终相遇即为环的入口。
 
   let slow = head, fast = head;
     while (fast && fast.next) {
