@@ -17,6 +17,13 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+中序遍历（左→根→右）
+    1
+   / \
+  2   3
+ / \
+4   5
+遍历路径：4 → 2 → 5 → 1 → 3
 var inorderTraversal = function(root) {
 
   let arr = []
