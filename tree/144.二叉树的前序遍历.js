@@ -31,6 +31,16 @@
 //   dfs(root)
 //   return arr
 // }
+
+栈（后进先出）：每次处理节点，先压右，再压左
+       1
+     /   \
+    2     3
+   / \
+  4   5
+栈变化：
+[1] → [3, 2] → [3, 5, 4] → [3, 5] → [3] → []
+结果：[1, 2, 4, 5, 3]
 var preorderTraversal = function(root){
   let res = []
   if(root===null){
