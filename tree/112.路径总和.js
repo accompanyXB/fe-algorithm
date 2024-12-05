@@ -27,6 +27,8 @@ var hasPathSum = function(root, targetSum) {
     return root.val ===targetSum
   }
   let offset = targetSum - root.val
+  // 1. 检查左子树是否存在一条路径，其和等于剩余目标 offset。
+  // 2. 检查右子树是否存在一条路径，其和等于剩余目标 offset
   return hasPathSum(root.left,offset) || hasPathSum(root.right,offset)
 };
 // @lc code=end
