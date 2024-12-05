@@ -34,7 +34,8 @@
 var levelOrder = function(root) {
   let ret = [] //结果
   if(root===null){
-    return ret
+    // 表示层序遍历的结果没有任何节点
+    return []
   }
   let queue = [root] //遍历中用的队列
   while(queue.length){
