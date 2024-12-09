@@ -41,12 +41,11 @@ var levelOrder = function(root) {
   while(queue.length){
     let len = queue.length //一层的数据量
     let curLevel = []
-    while(len>0){
+    while(len--){
       let node = queue.shift()  
       curLevel.push(node.val)
       node.left && queue.push(node.left)
       node.right && queue.push(node.right)
-      len--
     }
     ret.push(curLevel)
   }
