@@ -174,6 +174,7 @@ var countNodes = function(root) {
     }
     let leftNum = travese(node.left)
     let rightNum = travese(node.right)
+    // 当前子树的总节点数 = 左子树节点数 + 右子树节点数 + 当前节点自身
     return leftNum + rightNum +1
   }
   return travese(root)
