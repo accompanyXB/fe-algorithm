@@ -26,10 +26,12 @@ var isSubtree = function(root, subRoot) {
     return false
   }
   if(root.val===subRoot.val){
+    // 如果 root 和 subRoot 完全相同，返回 true
     if(isSameTree(root,subRoot)){
       return true
     }
   }
+  // 递归检查 root 的左子树和右子树是否包含 subRoot
   return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot)
 };
 
