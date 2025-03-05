@@ -44,11 +44,12 @@ var levelOrder = function(root) {
   while(queue.length) { // 当队列不为空时，继续遍历
     let len = queue.length // 当前层的节点数
     let curLevel = [] // 存放当前层的节点值
-    while(len--) { // 遍历当前层的所有节点
+    while(len) { // 遍历当前层的所有节点
       let node = queue.shift() // 取出队列头部节点
       curLevel.push(node.val) // 记录该节点值
       if (node.left) queue.push(node.left) // 左子节点入队
       if (node.right) queue.push(node.right) // 右子节点入队
+      len--
     }
     ret.push(curLevel) // 存储当前层遍历结果
   }
