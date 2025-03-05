@@ -17,6 +17,10 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
+push() 追加 → 从上往下
+unshift() 插队 → 从下往上
+unshift() 将当前层插入到数组的开头，因此最终结果是 从下到上
+
 var levelOrderBottom = function(root) {
   let ret = [] //结果
   if(root===null){
