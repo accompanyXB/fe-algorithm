@@ -31,23 +31,26 @@
 [1] → [2, 3] → [3, 4, 5] → [4, 5] → [5] → []
 结果：[1, 2, 3, 4, 5]
 
+用口诀记住逻辑：
+"逐层扫描，左进右出"（层序遍历特点）
+"队列先进先出（FIFO）"（保证层次顺序）
+"一层一层处理，每层遍历一次"
+
 var levelOrder = function(root) {
-  let ret = [] //结果
-  if(root===null){
-    // 表示层序遍历的结果没有任何节点
-    return []
-  }
-  let queue = [root] //遍历中用的队列
-  while(queue.length){
-    let len = queue.length //一层的数据量
-    let curLevel = []
-    while(len--){
-      let node = queue.shift()  
-      curLevel.push(node.val)
-      node.left && queue.push(node.left)
-      node.right && queue.push(node.right)
+  let ret = [] // 存放结果
+  if(root === null) return [] // 如果树为空，直接返回空数组
+
+  let queue = [root] // 用队列存放待遍历的节点
+  while(queue.length) { // 当队列不为空时，继续遍历
+    let len = queue.length // 当前层的节点数
+    let curLevel = [] // 存放当前层的节点值
+    while(len--) { // 遍历当前层的所有节点
+      let node = queue.shift() // 取出队列头部节点
+      curLevel.push(node.val) // 记录该节点值
+      if (node.left) queue.push(node.left) // 左子节点入队
+      if (node.right) queue.push(node.right) // 右子节点入队
     }
-    ret.push(curLevel)
+    ret.push(curLevel) // 存储当前层遍历结果
   }
   return ret
 };
