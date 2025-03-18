@@ -17,23 +17,28 @@
  * @param {TreeNode} root
  * @return {number}
  */
+// "判断左叶子 + 递归左右"
 var sumOfLeftLeaves = function(root) {
-  let leftSum = 0
-  function travese(node){
-    if(node===null){
-      return 
+  let leftSum = 0; // 存储左叶子节点的总和
+
+  function traverse(node) {
+    if (node === null) {
+      return; // 1️⃣ 递归终止条件
     }
-    // left是单独的节点
-    let left = node.left
-    if(left && !left.left && !left.right){
-      leftSum += left.val
+
+    let left = node.left;
+    // 2️⃣ 判断 node.left 是否是左叶子节点
+    if (left && !left.left && !left.right) {
+      leftSum += left.val; // 是左叶子节点，累加到 leftSum
     }
-    // left有嵌套，走递归
-    travese(node.left)
-    travese(node.right)
+
+    // 3️⃣ 继续递归左右子树
+    traverse(node.left);
+    traverse(node.right);
   }
-  travese(root) 
-  return leftSum
+
+  traverse(root);
+  return leftSum;
 };
 // @lc code=end
 
