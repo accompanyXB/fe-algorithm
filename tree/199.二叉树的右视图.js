@@ -27,13 +27,14 @@ var rightSideView = function(root) {
 
   while(queue.length){
     let len = queue.length
-    while(len--){
+    while(len){
       let node = queue.shift()
       if(len===0){
         ret.push(node.val)
       }
       node.left && queue.push(node.left)
       node.right && queue.push(node.right)
+      len--
     }
     
   }
